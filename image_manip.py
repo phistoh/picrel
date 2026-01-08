@@ -1,4 +1,5 @@
 import math
+import time
 
 from PIL import Image, ImageOps
 
@@ -7,6 +8,8 @@ MAX_SIDE_LENGTH = 1920
 
 
 def is_valid_image(file_name):
+    # small delay to let files close before working with them
+    time.sleep(1)
     try:
         with Image.open(file_name) as img:
             img.verify()
