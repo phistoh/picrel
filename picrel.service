@@ -1,0 +1,12 @@
+[Unit]
+Description=picrel
+After=multi-user.target
+
+[Service]
+Type=exec
+Restart=unless-stopped
+ExecStart=/home/phis/Git/picrel/.venv/bin/python file_watcher.py
+WorkingDirectory=/home/phis/Git/picrel/
+
+[Install]
+WantedBy=multi-user.target
