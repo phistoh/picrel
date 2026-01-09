@@ -5,7 +5,13 @@ from watchdog.observers import Observer
 
 from config_reader import get_config
 from discord_handler import send_image, send_message
-from image_manip import add_border, is_valid_image, resize_image, save_image
+from image_manip import (
+    add_border,
+    add_border_rounded,
+    is_valid_image,
+    resize_image,
+    save_image,
+)
 
 config = get_config()
 
@@ -16,7 +22,7 @@ class MyEventHandler(FileSystemEventHandler):
         print(f"File created: {file_path}")
         if is_valid_image(file_path):
             img = resize_image(file_path)
-            img = add_border(file_path)
+            img = add_border_rounded(file_path)
 
             filename = save_image(img)
             send_image(filename)
